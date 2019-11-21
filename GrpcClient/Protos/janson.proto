@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService";
+
+package Janson;
+
+service Jansoner{
+
+	rpc SendInfo (DataRequest) returns (DataReply);
+
+	rpc GetList (NonMessage) returns (stream ListMessage);
+}
+message NonMessage{}
+message ListMessage{
+	string id =1;
+	string name =2;
+	string age =3;
+	string email =4;
+}
+
+message DataRequest{
+	int32 id = 1;
+	string name = 2;
+	string pwd = 3;
+}
+
+message DataReply{
+	 string message = 1;
+	 bool isSuccess = 2;
+}
